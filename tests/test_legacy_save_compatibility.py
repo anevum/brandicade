@@ -23,8 +23,11 @@ def migrate_synthetic(db,mapping):
     # Test-only migration: one transaction, preserve all historical versions, refuse collisions.
     db.execute('SAVEPOINT synthetic_copy')
     try:
-        db.executescript((ROOT/'server/schema/proposed-saves-v1.sql').read_text().replace('CREATE TABLE IF NOT EXISTS','CREATE TABLE IF NOT EXISTS'))
-        db.executescript((ROOT/'server/schema/proposed-save-history-v1.sql').read_text())
+        # sqlite3.executescript() commits the surrounding transaction; execute each DDL statement instead.
+        for filename in ('proposed-saves-v1.sql','proposed-save-history-v1.sql'):
+            sql=(ROOT/'server/schema'/filename).read_text()
+            sql='\n'.join(line for line in sql.splitlines() if not line.lstrip().startswith('--'))
+            db.execute(sql.strip().rstrip(';'))
         old=db.execute('SELECT revision,data FROM saves WHERE player_id=?',('synthetic-player',)).fetchone()
         if old is None or old[0]<1: raise ValueError('Missing valid source')
         history=db.execute('SELECT revision,data FROM save_history WHERE player_id=? ORDER BY revision',('synthetic-player',)).fetchall()
