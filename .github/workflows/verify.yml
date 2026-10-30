@@ -15,7 +15,7 @@ jobs:
         with:
           node-version: '22'
       - run: node --test tests/logic.test.mjs tests/access-jwt.test.mjs tests/save-boundary.test.mjs tests/d1-save-adapter.test.mjs
-      - run: python3 -m unittest discover -s tests -p test_static_build.py -v
+      - run: python3 -m unittest discover -s tests -p 'test_*.py' -v
       - run: python3 build_worker.py
       - run: python3 -m py_compile build_worker.py
 # Verification only: the recovered static bundle must not overwrite production.
