@@ -45,3 +45,11 @@ This recovered static snapshot has no runtime dependencies, trackers, ads, payme
 3. Add a versioned Brandle export/import path without touching its existing local saves.
 4. Polish piece-by-piece swap/cascade animation and match-three difficulty curve, audio and performance.
 5. Recover and verify the existing cloud-save and access implementation, resolve source and licensing provenance, and verify backups and rollback before any deployment handover.
+
+## Repository ownership and recovery
+
+This repository is the intended independent source home for BRANDICADE, including its game interface, shared progression, tests and release documentation. The original recovery archive was imported into [draft PR #1](https://github.com/anevum/brandicade/pull/1); the default branch remains a recovery placeholder until the draft has been reviewed and merged.
+
+This branch is **not** an authoritative replacement for the running application. The deployed Worker has separate cloud-save and access logic that is absent from this static archive. Verify authenticated account isolation, source provenance, backups/restoration and release ownership before any production deployment. Preserve existing live game progress. Resolve the original MIT/GPLv3 licensing notices without silently stripping or rewriting them.
+
+Project index: [anevum/anevum](https://github.com/anevum/anevum) · [GitHub reorganization handoff](https://github.com/anevum/anevum/blob/main/handoffs/ANEVUM.OPS.PACKAGE.2026-10-30.002.md)
