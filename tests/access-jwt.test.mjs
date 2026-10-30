@@ -28,7 +28,8 @@ test('accepts valid synthetic signature with strict claims',async()=>{
 test('rejects altered signatures, foreign issuer, audience, expired tokens and future issued claims',async()=>{
  const f=await fixture();
  const good=await f.sign(f.claims);
- const badSignature=good.slice(0,-1)+(good.endsWith('A')?'B':'A');
+ const [encodedHeader, encodedBody, encodedSignature] = good.split('.');
+ const badSignature = [encodedHeader, encodedBody, (encodedSignature[0] === 'A' ? 'B' : 'A') + encodedSignature.slice(1)].join('.');
  await assert.rejects(verifyAccessJWT(badSignature,{issuer,audience,jwks:f.keys,now}));
  for(const overrides of [{iss:'https://other.invalid'},{aud:'other'},{exp:now-1},{iat:now+120},{nbf:now+120},{sub:''}]){
   await assert.rejects(verifyAccessJWT(await f.sign({...f.claims,...overrides}),{issuer,audience,jwks:f.keys,now}));
