@@ -65,7 +65,8 @@ class SyntheticCompatibilityTests(unittest.TestCase):
         db=fixture()
         db.execute('DELETE FROM save_history WHERE revision=2')
         with self.assertRaises(ValueError):migrate_synthetic(db,{'synthetic-player':'synthetic-subject'})
-        self.assertEqual(db.execute("SELECT COUNT(*) FROM brandicade_saves_v1").fetchone()[0],0)
+        # SQLite rolls back CREATE TABLE within the savepoint too: fail closed.
+        self.assertIsNone(db.execute("SELECT name FROM sqlite_master WHERE name='brandicade_saves_v1'").fetchone())
 
     def test_existing_target_collision_rolls_back(self):
         db=fixture()
