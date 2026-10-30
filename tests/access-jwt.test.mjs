@@ -7,7 +7,7 @@ const crypto = webcrypto;
 const issuer = 'https://test-team.cloudflareaccess.com';
 const audience = 'synthetic-audience';
 const now = 1800000000;
-const b64 = value => Buffer.from(typeof value === 'string' ? value : JSON.stringify(value)).toString('base64url');
+const b64 = value => Buffer.from(value instanceof ArrayBuffer || ArrayBuffer.isView(value) ? value : typeof value === 'string' ? value : JSON.stringify(value)).toString('base64url');
 async function fixture() {
  const pair = await crypto.subtle.generateKey({name:'RSASSA-PKCS1-v1_5',modulusLength:2048,publicExponent:new Uint8Array([1,0,1]),hash:'SHA-256'},true,['sign','verify']);
  const jwk = await crypto.subtle.exportKey('jwk',pair.publicKey);
