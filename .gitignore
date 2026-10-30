@@ -1,0 +1,11 @@
+.DS_Store
+node_modules/
+dist/
+*.log
+*.local
+.env*
+!*.env.example
+__pycache__/
+tests/*.png
+tests/*.jpg
+tests/bundle.js

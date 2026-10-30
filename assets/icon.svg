@@ -1,0 +1,20 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1024 1024" role="img" aria-label="BRANDICADE app icon">
+ <defs>
+  <linearGradient id="bg" x1="0" x2="1" y1="0" y2="1"><stop stop-color="#174C42"/><stop offset=".44" stop-color="#05221C"/><stop offset="1" stop-color="#2C3527"/></linearGradient>
+  <radialGradient id="aura"><stop stop-color="#31E7C0" stop-opacity=".38"/><stop offset=".62" stop-color="#1A9F92" stop-opacity=".11"/><stop offset="1" stop-color="#05221C" stop-opacity="0"/></radialGradient>
+  <linearGradient id="metal" x1="0" x2="1" y1="0" y2="1"><stop stop-color="#FFF2C5"/><stop offset=".38" stop-color="#EAA86F"/><stop offset=".66" stop-color="#BB774B"/><stop offset="1" stop-color="#FFD59D"/></linearGradient>
+  <linearGradient id="leaf" x1="0" x2="1" y1="0" y2="1"><stop stop-color="#C3F0C2"/><stop offset="1" stop-color="#48BF9A"/></linearGradient>
+  <filter id="shadow"><feDropShadow dx="0" dy="27" stdDeviation="28" flood-color="#000" flood-opacity=".62"/></filter>
+ </defs>
+ <rect width="1024" height="1024" fill="url(#bg)"/>
+ <circle cx="532" cy="466" r="450" fill="url(#aura)"/>
+ <rect x="31" y="31" width="962" height="962" rx="175" fill="none" stroke="#EBC08C" stroke-opacity=".31" stroke-width="6"/>
+ <rect x="63" y="63" width="898" height="898" rx="144" fill="none" stroke="#81DFBE" stroke-opacity=".11" stroke-width="3"/>
+ <g fill="none" stroke="#76D7B3" stroke-opacity=".12" stroke-width="2"><circle cx="515" cy="504" r="377"/><circle cx="515" cy="504" r="325" stroke-dasharray="5 14"/></g>
+ <path d="M304 777V252h241c200 0 222 230 55 262 197 30 186 263-54 263H304Zm98-424v120h140c86 0 86-120 0-120H402Zm0 215v107h146c80 0 80-107 0-107H402" fill="#061D18" stroke="#020C0A" stroke-width="25" stroke-linejoin="round" filter="url(#shadow)"/>
+ <path d="M304 777V252h241c200 0 222 230 55 262 197 30 186 263-54 263H304Zm98-424v120h140c86 0 86-120 0-120H402Zm0 215v107h146c80 0 80-107 0-107H402" fill="none" stroke="url(#metal)" stroke-width="24" stroke-linejoin="round" stroke-linecap="round"/>
+ <path d="M557 296c22-102 97-148 207-136-41 97-109 148-207 136Z" fill="url(#leaf)" stroke="#C4F1BE" stroke-width="7"/>
+ <path d="M573 283 738 178" stroke="#286E55" stroke-width="10" stroke-linecap="round"/>
+ <path d="M258 810h506" stroke="#DAB88F" stroke-opacity=".36" stroke-width="5" stroke-linecap="round"/>
+ <g fill="#CFFFE4"><circle cx="231" cy="312" r="6" opacity=".86"/><circle cx="784" cy="651" r="5" opacity=".8"/><circle cx="210" cy="662" r="3" opacity=".55"/><circle cx="752" cy="394" r="4" opacity=".6"/></g>
+</svg>

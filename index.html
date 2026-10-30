@@ -1,0 +1,89 @@
+<!doctype html>
+<html lang="en">
+<head>
+ <meta charset="utf-8">
+ <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+ <meta name="theme-color" content="#061b18">
+ <meta name="color-scheme" content="dark">
+ <meta name="description" content="A whole little living arcade, made by Devon for Brandi. Play, collect memories and keep growing together.">
+ <meta property="og:type" content="website"><meta property="og:title" content="BRANDICADE — The Living Arcade">
+ <meta property="og:description" content="A little universe of games made for Brandi, one delight at a time.">
+ <meta property="og:image" content="https://brandicade.devonakins.com/assets/share.jpg"><meta name="twitter:card" content="summary_large_image">
+ <meta name="apple-mobile-web-app-capable" content="yes"><meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+ <meta name="apple-mobile-web-app-title" content="BRANDICADE"><link rel="apple-touch-icon" href="/assets/icon-512.png">
+ <link rel="icon" type="image/svg+xml" href="/assets/icon.svg"><link rel="manifest" href="/manifest.webmanifest">
+ <link rel="stylesheet" href="/src/styles.css">
+ <title>BRANDICADE — The Living Arcade</title>
+</head>
+<body>
+ <div class="viewport" id="app">
+ <div class="mist" aria-hidden="true"></div><canvas id="fireflies" aria-hidden="true"></canvas>
+ <header class="container topbar">
+  <a class="logo" href="#home" id="brand-home" aria-label="BRANDICADE arcade home"><span class="crest"><img src="/assets/mark.svg" alt="" width="38" height="38"></span><span class="logo-copy"><strong>BRANDICADE</strong><span>THE LIVING ARCADE</span></span></a>
+  <div class="top-right">
+   <span class="status"><i class="dot"></i><span class="status-text">THE LIGHTS ARE ON</span></span>
+   <button class="level-chip" id="level-chip" type="button" data-go="profile" aria-label="View Brandi profile"><span class="level-orb" id="mini-orb">B</span><span class="level-chip-copy">BRANDI <b id="mini-level">LV 1</b></span></button>
+   <button class="icon-button" id="settings-open" type="button" aria-label="Open settings"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><path d="M12 3 14 5l3-.3 1 3 2.5 1.5-1 3 1 2.8-2.5 1.5-.5 3-3.2.1-2.3 2-2.3-2-3.2-.1-.5-3-2.5-1.5 1-2.8-1-3L7 7.7l1-3L11 5l1-2Z"/><circle cx="12" cy="12" r="3.5"/></svg></button>
+  </div>
+ </header>
+ <main class="container" id="content">
+  <section class="section active" id="home" aria-labelledby="home-title">
+   <div class="hero home-hero">
+    <div class="hero-text"><div class="eyebrow">Your own little universe</div><h1 id="home-title">Hey, Brandi.<br>Let's <em>play.</em></h1>
+     <p class="hero-copy">One beautiful little place for every game, surprise, and wild idea we dream up. The collection is yours, and it only gets better.</p>
+     <div class="actions"><button class="btn primary" type="button" data-action="play"><span class="button-shine"></span><span id="home-play-label">Play Glimmer Pop</span><span aria-hidden="true">↗</span></button><button class="btn secondary" type="button" data-go="library">Explore the arcade</button></div>
+     <div class="hero-metrics"><div><span id="hero-level">01</span><small>YOUR LEVEL</small></div><div><span id="hero-stars">00</span><small>STARS EARNED</small></div><div><span id="hero-badges">00</span><small>TREASURES</small></div></div>
+    </div>
+    <div class="hero-stage" aria-hidden="true"><div class="orbits"></div><div class="portal"><div class="portal-shine"></div><img src="/assets/atrium.svg" alt="" width="500" height="500"><span class="spark one"></span><span class="spark two"></span><span class="spark three"></span><span class="spark four"></span></div><span class="stage-caption">THE ATRIUM · THE DOORS ARE OPEN</span></div>
+   </div>
+   <div class="section-titlebar"><h2 class="section-heading">Pick a <em>little adventure.</em></h2><span class="hint">Your whole collection</span></div>
+   <div class="collection collection-v1">
+    <button class="game-card glimmer-card" type="button" data-action="play"><span class="card-eyebrow"><i class="dot"></i> PLAYABLE NOW</span><div class="charm-art" aria-hidden="true"><span class="art-gem a"></span><span class="art-gem b"></span><span class="art-gem c"></span><span class="art-gem d"></span><span class="art-gem e"></span></div><div class="card-bottom"><div class="game-card-title">GLIMMER POP <small>THE MATCH-THREE GARDEN</small></div><p id="home-glimmer-summary">A luminous little puzzle world. Match, bloom, and collect.</p><span class="card-link">PLAY GAME <span aria-hidden="true">→</span></span></div></button>
+    <button class="game-card brandle-card" type="button" data-action="brandle"><span class="card-eyebrow"><i class="dot"></i> READY TO PLAY</span><div class="brandle-art" aria-hidden="true"><span>B</span><span>L</span><span>O</span><span>O</span><span>M</span></div><div class="card-bottom"><div class="game-card-title">BRANDLE <small>THE GLIMMER GROVE</small></div><p>Five letters. Six guesses. Daily Grove and Wild Run.</p><span class="card-link">OPEN BRANDLE <span aria-hidden="true">↗</span></span></div></button>
+    <div class="game-card promise-card"><span class="card-eyebrow">IN THE WORKSHOP</span><div class="promise-mark" aria-hidden="true"><svg viewBox="0 0 100 100"><circle cx="50" cy="50" r="35" fill="none" stroke="currentColor" stroke-dasharray="2 6"/><path d="M50 16Q70 46 50 82Q30 46 50 16Z" fill="currentColor" opacity=".25"/><path d="M50 21v58" stroke="currentColor"/></svg></div><div class="card-bottom"><div class="game-card-title">NEXT SURPRISE <small>COMING WHEN IT'S READY</small></div><p>New games can join the arcade whenever Devon makes one.</p></div></div>
+   </div>
+   <div class="home-row"><div class="small-feature"><span class="eyebrow">YOUR STORY</span><h3 id="story-title">The first page of forever.</h3><p id="story-copy">Every little victory builds a permanent collection of memories and treasures. No timers forcing you to come back.</p><button class="text-link" type="button" data-go="profile">Visit your profile →</button></div><div class="small-feature reward-feature"><span class="eyebrow">NEXT TREASURE</span><div id="next-treasure"></div><button class="text-link" type="button" data-go="treasures">Explore achievements →</button></div></div>
+   <div class="under-note"><span>MADE BY DEVON. FOR BRANDI.</span><span>THIS LITTLE UNIVERSE KEEPS GROWING.</span></div>
+  </section>
+  <section class="section" id="library" aria-labelledby="library-title"><div class="page-lead"><div class="eyebrow">The collection</div><h1 id="library-title">Choose your <em>escape.</em></h1><p>Two games to start. Every new world will be crafted just for you, with its own moods, music and little surprises.</p></div><div class="library-grid library-v1">
+   <button class="game-card glimmer-card library-card" type="button" data-action="play"><span class="card-eyebrow"><i class="dot"></i> PLAYABLE NOW</span><div class="charm-art" aria-hidden="true"><span class="art-gem a"></span><span class="art-gem b"></span><span class="art-gem c"></span><span class="art-gem d"></span><span class="art-gem e"></span></div><div class="card-bottom"><div class="game-card-title">GLIMMER POP<small>THE MATCH-THREE GARDEN</small></div><p id="library-glimmer-summary">Satisfying matches. Cascading magic. Endless levels, no lives to run out of.</p><span class="card-link">PLAY / CONTINUE →</span></div></button>
+   <button class="game-card brandle-card library-card" type="button" data-action="brandle"><span class="card-eyebrow"><i class="dot"></i> READY TO PLAY</span><div class="brandle-art" aria-hidden="true"><span>B</span><span>L</span><span>O</span><span>O</span><span>M</span></div><div class="card-bottom"><div class="game-card-title">BRANDLE<small>THE GLIMMER GROVE</small></div><p>A daily word bloom and unlimited wild puzzles. Your existing progress stays on the original Brandle site.</p><span class="card-link">OPEN ORIGINAL GAME ↗</span></div></button>
+   <div class="game-card promise-card library-card"><span class="card-eyebrow">THE COLLECTION GROWS</span><div class="promise-mark" aria-hidden="true"><svg viewBox="0 0 100 100"><circle cx="50" cy="50" r="35" fill="none" stroke="currentColor" stroke-dasharray="2 6"/><path d="M50 16Q70 46 50 82Q30 46 50 16Z" fill="currentColor" opacity=".25"/></svg></div><div class="card-bottom"><div class="game-card-title">THE WORKSHOP<small>FUTURE GAMES</small></div><p>Maybe another match game, an idle garden, a little mystery, or something invented together.</p></div></div>
+  </div></section>
+  <section class="section" id="game" aria-labelledby="game-title"><div class="game-shell">
+   <div class="game-top"><button class="back-button" type="button" data-go="home" aria-label="Back to arcade">← <span>ARCADE</span></button><div class="game-heading"><div class="eyebrow">The enchanted garden</div><h1 id="game-title">Glimmer <em>Pop.</em></h1></div><button class="utility-button" data-action="game-help" aria-label="How to play Glimmer Pop" type="button">?</button></div>
+   <div class="game-info"><div class="level-info"><span class="smallcap">LEVEL <b id="game-level">01</b></span><strong id="game-level-name">First Light</strong><span class="smallcap">COLLECT THE GLOW</span></div><div class="score-block"><span>SCORE</span><b id="game-score">0</b></div></div>
+   <div class="challenge-strip"><div class="goal-symbol" id="goal-symbol"></div><div class="goal-copy"><span>YOUR GOAL</span><b id="game-goal-text">Collect 13 ferns</b><div class="goal-track"><span id="goal-fill"></span></div></div><div class="moves-counter"><b id="game-moves">24</b><span>MOVES LEFT</span></div></div>
+   <div class="game-board-outer"><div class="game-board-glow" aria-hidden="true"></div><div class="game-board" id="pop-board" role="group" aria-label="Glimmer Pop game board: tap or swipe neighboring pieces to swap them"></div><div class="board-shine" aria-hidden="true"></div></div>
+   <div class="game-bottom"><div class="game-live" id="game-live" role="status" aria-live="polite">Swap neighboring charms to match three.</div><div class="game-tools"><button class="small-button" type="button" data-action="hint">Find a hint</button><button class="small-button" type="button" data-action="restart">Restart level</button></div></div>
+   <div class="game-end" id="game-end" hidden><div class="end-spark" id="end-spark" aria-hidden="true"></div><div class="eyebrow" id="end-eyebrow">LEVEL COMPLETE</div><h2 id="end-heading">Beautifully done!</h2><div class="star-cluster" id="end-stars" aria-label="Stars earned"></div><p id="end-message"></p><div class="end-stats" id="end-stats"></div><div class="actions end-actions"><button class="btn primary" type="button" data-action="next">Next level →</button><button class="btn secondary" type="button" data-action="replay">Play again</button><button class="btn secondary" type="button" data-go="home">Return to arcade</button></div></div>
+  </div></section>
+  <section class="section" id="profile" aria-labelledby="profile-title"><div class="page-lead"><div class="eyebrow">A little world with your name on it</div><h1 id="profile-title">Brandi's <em>corner.</em></h1><p>No audience. No rankings. Your own permanent collection of games, moments and tiny victories.</p></div>
+   <div class="profile-hero"><div class="profile-pattern" aria-hidden="true"></div><div class="avatar-rings"><div class="avatar-large" id="profile-avatar" aria-label="Current avatar"></div></div><div class="profile-overview"><span class="profile-kicker">THE ONE AND ONLY</span><h2>Brandi<span class="name-glow">.</span></h2><span class="profile-title" id="profile-equipped-title">Keeper of the Grove</span><div class="xp-row"><span id="profile-level">LEVEL 1</span><span id="profile-xp">0 / 167 XP</span></div><div class="xp-track"><div id="xp-fill"></div></div><p class="xp-note">Every completed adventure adds to your lifetime story. Nothing gets reset.</p></div><div class="profile-token"><span class="token-shape" aria-hidden="true">✧</span><strong id="profile-petals">0</strong><small>GLOW PETALS</small></div></div>
+   <div class="stat-panels"><div class="stat-tile"><strong id="stat-wins">0</strong><span>PUZZLES WON</span></div><div class="stat-tile"><strong id="stat-stars">0</strong><span>STARS</span></div><div class="stat-tile"><strong id="stat-badges">0</strong><span>ACHIEVEMENTS</span></div><div class="stat-tile"><strong id="stat-levels">0</strong><span>WORLDS CLEARED</span></div></div>
+   <div class="profile-subhead"><div><span class="eyebrow">Make it yours</span><h2>The look &amp; the <em>legend.</em></h2></div><p>Collect frames and titles as you play. Choose what feels most like you.</p></div>
+   <div class="custom-grid"><div class="custom-panel"><div class="custom-heading"><h3>Your familiar</h3><span>CHOOSE AN AVATAR</span></div><div class="avatar-options" id="avatar-options"></div></div><div class="custom-panel"><div class="custom-heading"><h3>Your frame</h3><span>EARNED BY LEVEL</span></div><div class="frame-options" id="frame-options"></div></div><div class="custom-panel custom-titles"><div class="custom-heading"><h3>Your title</h3><span>A LITTLE BIT OF MAGIC</span></div><div class="title-options" id="title-options"></div></div></div>
+   <div class="profile-duo"><div class="memory-panel"><span class="eyebrow">Your growing collection</span><h3>The Keepsake Gallery</h3><p>Achievements become real, permanent treasures here. The stories and letters we add later will be made by Devon, never filled with artificial memories.</p><div class="recent-awards" id="profile-awards"></div><button class="text-link" type="button" data-go="treasures">View all treasures →</button></div><div class="memory-panel data-panel"><span class="eyebrow">Owned by you</span><h3>Keep your progress safe.</h3><p>Your arcade currently saves on this device. Export a backup any time; no account, ads or cloud tracking.</p><button class="btn secondary" type="button" data-action="export">Export save file ↓</button><button class="text-link" type="button" data-action="open-settings">Import or manage data →</button></div></div>
+  </section>
+  <section class="section" id="treasures" aria-labelledby="treasures-title"><div class="page-lead"><div class="eyebrow">The trophy greenhouse</div><h1 id="treasures-title">Every little <em>victory.</em></h1><p>Real achievements, unlocked by what you've actually done. No purchased rewards, expiring badges, or artificial streak pressure.</p></div>
+   <div class="treasure-summary"><div><span class="smallcap">YOUR COLLECTION</span><h2><span id="treasure-owned">0</span><small> / 10 achievements</small></h2></div><div class="treasure-progress"><div id="treasure-progress-fill"></div></div><span class="treasure-hint">A gallery that only gets brighter</span></div>
+   <div class="achievement-grid" id="achievement-grid"></div>
+  </section>
+  <section class="section" id="together" aria-labelledby="together-title"><div class="page-lead"><div class="eyebrow">A seat for two</div><h1 id="together-title">The <em>Together</em> Room.</h1><p>A future home for little games to play with Devon — pass-and-play first, private remote games later if needed.</p></div><div class="playroom"><div><span class="card-eyebrow">IN THE WORKSHOP · NOT ACTIVE YET</span><h2>Two seats.<br>One little adventure.</h2><p>When the first two-player game is ready, this room opens. Until then, the games that exist today are ready in the arcade.</p><button class="btn secondary" type="button" data-go="library">Explore current games</button></div><div class="room-visual" aria-hidden="true"><div class="room-rings"></div><div class="room-bubbles"><span>B</span><span>D</span></div></div></div></section>
+ </main>
+ <nav class="bottom-nav" aria-label="Main navigation">
+  <button class="nav-button active" type="button" data-go="home" aria-current="page"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><path d="M3 20V10L12 3l9 7v10H3Z"/><path d="M9 20v-7h6v7"/></svg>Arcade</button>
+  <button class="nav-button" type="button" data-go="library"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><rect x="3" y="3" width="8" height="8" rx="1.5"/><rect x="13" y="3" width="8" height="8" rx="1.5"/><rect x="3" y="13" width="8" height="8" rx="1.5"/><rect x="13" y="13" width="8" height="8" rx="1.5"/></svg>Games</button>
+  <button class="nav-button" type="button" data-go="game"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><path d="M4 11H2v6a4 4 0 0 0 7 2l3-3 3 3a4 4 0 0 0 7-2v-6h-2l-4-3H8L4 11Z"/><path d="M7 11v6M4 14h6m7-1h.01m3 3h.01"/></svg>Play</button>
+  <button class="nav-button" type="button" data-go="treasures"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><path d="M7 3h10l3 6-8 12L4 9l3-6Z"/><path d="M4 9h16M9 3l3 18 3-18"/></svg>Treasures</button>
+  <button class="nav-button" type="button" data-go="profile"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><circle cx="12" cy="8" r="4"/><path d="M4 21v-3a8 8 0 0 1 16 0v3"/></svg>Brandi</button>
+ </nav>
+ <div class="dialog-backdrop" id="modal" role="presentation"><div class="dialog app-dialog" role="dialog" aria-modal="true" aria-labelledby="modal-title"><button class="close" type="button" id="modal-close" aria-label="Close dialog">×</button><div id="modal-body"></div></div></div>
+ <div class="toast" id="toast" role="status" aria-live="polite"></div>
+ <div class="celebrations" id="celebrations" aria-hidden="true"></div>
+ <input id="import-file" type="file" accept=".json,application/json" hidden>
+ <footer class="app-footnote">MADE BY DEVON · JUST FOR BRANDI · FOREVER IN THE MAKING</footer>
+ </div>
+ <script type="module" src="/src/app.mjs"></script>
+</body>
+</html>
