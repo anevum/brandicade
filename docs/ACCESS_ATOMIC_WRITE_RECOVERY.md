@@ -2,7 +2,7 @@
 
 Status: **ISOLATED SOURCE / NOT RELEASED**. Nothing in this module set is bundled by
 `build_worker.py` or configured in the production Worker. This is a reviewable
-reconstruction using synthetic identities, D1-like fakes and disposable SQLite,
+reconstruction using synthetic identities, D1-like fakes, disposable SQLite and isolated real Cloudflare D1/Worker tests completed in Small Job 043,
 not a migration of Brandi's existing saves.
 
 ## Trust boundary: Cloudflare Access
@@ -58,10 +58,15 @@ The candidate distinguishes:
 Cloudflare documents that D1 `batch()` executes statements as a
 transaction and rolls back the entire sequence if a statement fails:
 [official D1 API documentation](https://developers.cloudflare.com/d1/worker-api/d1-database/).
-Synthetic SQLite tests exercise its SQL under transaction/savepoint
-semantics, but that is not equivalent to a real disposable D1 Worker test.
-Until the D1 compatibility and failure cases are independently reproduced,
-the candidate is **not production-ready**.
+Synthetic SQLite tests exercise SQL under transaction/savepoint semantics.
+**Small Job 043 independently verified the same committed SQL on an actual
+isolated Cloudflare D1 database, through both D1 REST batches and a temporary
+Worker `env.SYNTH_DB.batch()` binding**, including stale writes, concurrent
+conflicts, missing history, unique history collisions and rollback on an
+injected history failure. The temporary database and Worker were deleted.
+See [D1 disposable integration evidence](D1_DISPOSABLE_INTEGRATION_2026-10-30.md).
+**The candidate remains NOT production-ready:** actual owner Access acceptance,
+production HTTP wiring, backup/restore, rights and rollback are missing.
 
 No schema changes are performed or proposed in this job. The separate
 `brandicade_saves_v1` identity migration remains out of scope. The
@@ -100,9 +105,9 @@ The static build remains deliberately independent of the new backend code.
 1. Validate Access issuer/AUD/JWKS fetch/rotation and configured email
    roles privately, using an authorized owner session and authenticated
    negative-path tests. Do not publish Access identity details.
-2. Prove exact legacy request/response and production D1 batch
-   transaction behavior in an isolated, disposable Cloudflare environment.
-   Test failures, concurrent sessions and database unavailable behavior.
+2. Job 043 verified isolated D1 batches and rollback. Next verify the
+   complete signed HTTP save path and database-unavailable behavior under
+   authorized staging identities; never bind to production D1.
 3. Verify a private encrypted D1 backup and real disposable restore. Confirm
    current legacy saved record/history consistency without exposing records
    or modifying the live table.
