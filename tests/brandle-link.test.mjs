@@ -30,7 +30,7 @@ test('does not embed the cross-origin game or silently move its browser saves', 
   assert.doesNotMatch(html, /<form[^>]*action="[^"]*brandle/i);
   assert.match(html, /existing progress stays on the original Brandle site/i);
   assert.match(app, /progress stays on its original web address/i);
-  assert.match(app, /BRANDLE does not claim its achievements yet/);
+  assert.match(app, /BRANDICADE does not claim its achievements yet/);
 });
 
 test('direct launcher stays functional if Brandicade JavaScript fails', () => {
