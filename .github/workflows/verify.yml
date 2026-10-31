@@ -14,7 +14,7 @@ jobs:
       - uses: actions/setup-node@v4
         with:
           node-version: '22'
-      - run: node --test tests/logic.test.mjs tests/access-jwt.test.mjs tests/save-boundary.test.mjs tests/d1-save-adapter.test.mjs tests/brandle-link.test.mjs
+      - run: node --test tests/logic.test.mjs tests/access-jwt.test.mjs tests/save-boundary.test.mjs tests/d1-save-adapter.test.mjs tests/brandle-link.test.mjs tests/legacy-read-contract.test.mjs
       - run: python3 -m unittest discover -s tests -p 'test_*.py' -v
       - run: python3 build_worker.py
       - run: python3 -m py_compile build_worker.py
