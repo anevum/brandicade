@@ -23,7 +23,7 @@ function parseJSON(bytes) {
   } catch { fail(); }
 }
 
-export async function verifyAccessJWT(token, { issuer, audience, jwks, now = Math.floor(Date.now() / 1000) } = {}) {
+async function verifyVerifiedClaims(token, { issuer, audience, jwks, now = Math.floor(Date.now() / 1000) } = {}) {
   if (typeof issuer !== 'string' || !issuer.startsWith('https://')
       || typeof audience !== 'string' || !audience
       || !Number.isSafeInteger(now) || !Array.isArray(jwks?.keys)) fail();
@@ -56,8 +56,27 @@ export async function verifyAccessJWT(token, { issuer, audience, jwks, now = Mat
       || typeof claims.sub !== 'string' || !claims.sub || claims.sub.length > 256
       || !Number.isSafeInteger(claims.exp) || claims.exp <= now
       || claims.nbf !== undefined && (!Number.isSafeInteger(claims.nbf) || claims.nbf > now)
-      || claims.iat !== undefined && (!Number.isSafeInteger(claims.iat) || claims.iat > now + 60)) fail();
-  return Object.freeze({ subject: claims.sub, expiresAt: claims.exp });
+      || !Number.isSafeInteger(claims.iat) || claims.iat <= 0 || claims.iat > now + 60) fail();
+  return Object.freeze({ subject: claims.sub, expiresAt: claims.exp, email: claims.email });
+}
+
+/** Preserve the existing minimal verified identity interface. */
+export async function verifyAccessJWT(token, options) {
+  const claims = await verifyVerifiedClaims(token, options);
+  return Object.freeze({ subject: claims.subject, expiresAt: claims.expiresAt });
+}
+
+/** The signed Access email claim is used only for a private server-side allowlist. */
+export async function verifyAccessJWTIdentity(token, options) {
+  const claims = await verifyVerifiedClaims(token, options);
+  if (typeof claims.email !== 'string' || claims.email.length > 254
+      || !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(claims.email)
+      || /[\x00-\x1f\x7f]/.test(claims.email)) fail();
+  return Object.freeze({
+    subject: claims.subject,
+    expiresAt: claims.expiresAt,
+    email: claims.email.toLowerCase(),
+  });
 }
 
 export async function verifyAccessRequest(request, options) {
