@@ -56,7 +56,7 @@ async function verifyVerifiedClaims(token, { issuer, audience, jwks, now = Math.
       || typeof claims.sub !== 'string' || !claims.sub || claims.sub.length > 256
       || !Number.isSafeInteger(claims.exp) || claims.exp <= now
       || claims.nbf !== undefined && (!Number.isSafeInteger(claims.nbf) || claims.nbf > now)
-      || claims.iat !== undefined && (!Number.isSafeInteger(claims.iat) || claims.iat > now + 60)) fail();
+      || !Number.isSafeInteger(claims.iat) || claims.iat <= 0 || claims.iat > now + 60) fail();
   return Object.freeze({ subject: claims.sub, expiresAt: claims.exp, email: claims.email });
 }
 
