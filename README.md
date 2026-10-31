@@ -12,7 +12,7 @@ An original, offline-first, private-personal arcade made for Brandi. The source 
 - Glimmer Pop: original 7x7 match-three engine, swipe/tap swaps, cascades, special 4+/5+ clears, collectible objectives, 3-star results, 12 named stages with further numbered levels, restart, hints, level map.
 - Persistent device-local progression: XP, titles, frames, three avatars, 10 event-driven achievements, statistics, stars, and local backup export/import.
 - PWA app shell with offline caching; reduced motion, high contrast, color-assist labels, optional synthesized sound.
-- Brandle preserved as an external game, pending verified same-origin progress migration.
+- Brandle has two **one-tap launchers** (home and Games library) to its original, working website; its saved progress remains on the original origin. Full in-arcade hosting and shared progression are not yet implemented. See [the Brandle restoration boundary](docs/BRANDLE_RESTORATION.md).
 
 ## Local development
 Serve the folder at its root (not via `file://`) using a static web server:
