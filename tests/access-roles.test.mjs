@@ -148,7 +148,7 @@ test('rejects missing, untrusted or indistinguishable private allowlist configur
     {audience:''},
     {jwksProvider:null},
     {playerEmail:ADMIN},
-    {adminEmail:'ADMIN@example.invalid'},
+    {adminEmail:'PLAYER@example.invalid'},
     {playerEmail:'bad address'},
   ]){
     assert.throws(()=>f.auth(bad),/Trusted Access role configuration/);
