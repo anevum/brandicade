@@ -119,6 +119,8 @@ test('wrong issuer, audience, expiration, nbf and future iat fail closed',async(
     {exp:NOW-1},
     {nbf:NOW+1},
     {iat:NOW+120},
+    {iat:undefined},
+    {iat:-1},
     {sub:''},
     {email:''},
     {email:'not-an-email'},
