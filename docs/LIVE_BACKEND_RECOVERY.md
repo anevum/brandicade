@@ -26,4 +26,4 @@ Before proposing a public backend patch:
 
 ## Implementation status
 
-No cloud-save/Access source has been imported into GitHub by this investigation. No database rows were queried, and no Worker, Access policy, route, secrets or deployment was modified. The static-source recovery PR is intentionally draft and must not be deployed as a replacement.
+A clean-room **read-only** D1/API contract has been imported on the draft recovery branch through [Small Job 041 PR #3](https://github.com/anevum/brandicade/pull/3), with synthetic role and response tests documented in [LEGACY_API_READ_RECOVERY.md](LEGACY_API_READ_RECOVERY.md). It is **not wired** into any Worker. The signed Access role integration, write/concurrency behavior, historical backup restoration and production release remain unimplemented. No database rows were queried, and no Worker, Access policy, route, secrets or deployment was modified. The static-source recovery PR remains draft and must not be deployed as a replacement.
