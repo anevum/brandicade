@@ -22,7 +22,7 @@ python3 -m http.server 8788
 node --test tests/logic.test.mjs
 ```
 
-This recovered static snapshot has no runtime dependencies, trackers, ads, payment services, third-party libraries or server database. The live application has a separate cloud-save layer not present in this deployable snapshot. A **non-deploying read-only reconstruction** of the current D1/API response contract is staged under `server/legacy-*.mjs` with synthetic tests; it does not yet implement signed-role integration, cloud writes, backup restoration or safe production deployment. See [live API read recovery](docs/LEGACY_API_READ_RECOVERY.md). Uses native ES modules. The game and progress engines are deliberately pure/testable.
+This recovered static snapshot has no runtime dependencies, trackers, ads, payment services, third-party libraries or server database. The live application has a separate cloud-save layer not present in this deployable snapshot. The branch also includes **non-deploying** read-only API/D1 adapters and new candidate signed Access-role and transactional save/history modules, tested only with synthetic identities and disposable SQLite. None is connected to the live Worker or its D1 database; authenticated owner acceptance, actual D1 batch tests, encrypted backup/restore, licensing and a safe release remain incomplete. See [read-contract notes](docs/LEGACY_API_READ_RECOVERY.md) and [signed-role/write staging](docs/ACCESS_ATOMIC_WRITE_RECOVERY.md). Uses native ES modules. The game and progress engines are deliberately pure/testable.
 
 ## Important boundaries
 - This is a **device-local profile**, not a secure cross-device login. Export backups before clearing Safari data or changing phones.

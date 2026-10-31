@@ -78,7 +78,13 @@ or rotate the player key during this source recovery task.
   non-deploying until an entirely separate audited Worker entrypoint and
   release owner are established.
 
-## Next bounded jobs
+## Small Job 042 implementation checkpoint
+
+[PR #4](https://github.com/anevum/brandicade/pull/4) was merged **only into this draft recovery branch**, not `main`. It consolidates signed RS256 Access verification, stages a privately configured player/admin email allowlist, and reconstructs a D1 `batch()` write/history candidate for the existing schema. Tests use generated signing keys and synthetic SQLite data; the new HTTP route still refuses writes. See [ACCESS_ATOMIC_WRITE_RECOVERY.md](ACCESS_ATOMIC_WRITE_RECOVERY.md).
+
+All five release blockers remain: owner-authenticated role acceptance, disposable D1 transaction confirmation, encrypted backup/restore of private state, license/asset provenance and rollback. This candidate must not be deployed until these checks are proven.
+
+## Original next bounded jobs (read-only phase; staged candidate progress above)
 
 1. Reconcile the duplicated candidate JWT verifiers into one tested
    issuer/audience/email-allowlist integration without publishing the
