@@ -4,7 +4,7 @@ import { readFileSync } from 'node:fs';
 
 const html = readFileSync(new URL('../index.html', import.meta.url), 'utf8');
 const app = readFileSync(new URL('../src/app.mjs', import.meta.url), 'utf8');
-const URL = 'https://brandle-glimmer-grove.devonakins.workers.dev/';
+const BRANDLE_URL = 'https://brandle-glimmer-grove.devonakins.workers.dev/';
 const cards = [...html.matchAll(/<a class="game-card brandle-card[^>]*>[\s\S]*?<\/a>/g)].map(m => m[0]);
 
 test('Brandle has one directly accessible launcher on home and library', () => {
@@ -15,7 +15,7 @@ test('Brandle has one directly accessible launcher on home and library', () => {
 
 test('each launcher uses a safe native link to the existing game origin', () => {
   for (const card of cards) {
-    assert.ok(card.includes(`href="${URL}"`));
+    assert.ok(card.includes(`href="${BRANDLE_URL}"`));
     assert.match(card, /target="_blank"/);
     assert.match(card, /rel="noopener noreferrer"/);
     assert.match(card, /aria-label="Play Brandle[^"]*opens the original game/);
